@@ -16,7 +16,7 @@ mongoose.connection.on("error", function(err) {
 
 mongoose.connect(DB_URI, { useNewUrlParser: true });
 app.listen(3001, () => {
-    console.log('Products Services running ...');
+    console.log('Search Services running ...');
 });
 
 
