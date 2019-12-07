@@ -1,7 +1,7 @@
 {
   "name": "products-service",
   "version": "1.0.0",
-  "description": "Microservice for handling products",
+  "description": "Microservice for handling search",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
