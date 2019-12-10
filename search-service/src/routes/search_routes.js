@@ -4,7 +4,7 @@ const router = Router()
 
 router.get("/products/", async (req, res) => {
     
-    const productResponse = await fetch("http://localhost:3000/products/");
+    const productResponse = await fetch("http://products:4000");
     try{
         const productJson = await productResponse.json();
         res.send(productJson);

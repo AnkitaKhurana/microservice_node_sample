@@ -1,0 +1,41 @@
+version: '3'
+services:
+  web:
+    build: './web-service'
+    ports:
+      - "3002:3003"
+
+  search:
+    build: './search-service'
+    ports:
+      - "3001:3003"
+    depends_on: 
+      - db
+    environment:
+      - MONGO_DB_URI=mongodb://db/microservices
+
+  products:
+    build: './products-service'
+    ports:
+      - "3000:3003"
+    depends_on: 
+      - db
+    environment:
+      - MONGO_DB_URI=mongodb://db/microservices
+  
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8010:8010"
+    volumes:
+      - ./web-service/public:/srv/www/static
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+      - products
+      - search

@@ -18,7 +18,7 @@
 <body>
   <h1>Create Products</h1>
   <form onsubmit="return API.saveProduct()">
-    <input id="productname" type="text">
+    <input id="product" type="text">
     <input type="submit" value="submit">
   </form>
   <h1>Search</h1>
@@ -51,11 +51,11 @@
         });
       };
 
-      const postProductName = makePostNameFunc("http://localhost:3000/products");
+      const postVideoName = makePostNameFunc("http://localhost:8010/products");
 
       const search = () => {
         try {
-          fetch("http://localhost:3001/search/products")
+          fetch("http://localhost:8010/search/products")
             .then(resp => resp.json())
             .then(results => {
               const ul = document.querySelector("#matches");
@@ -78,7 +78,7 @@
       };
 
       return {
-        saveProduct: makeSaveFunc("#productname", postProductName),
+        saveProduct: makeSaveFunc("#product", postVideoName),
         search
       }
     })();
